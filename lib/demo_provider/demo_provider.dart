@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       home: ChangeNotifierProvider(
         create: (context)=> Counter(),
-        child: MyHomePage(title: 'Flutter Demo Home Page');
+        child: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );
   }
@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
         child: Column(
@@ -56,14 +56,14 @@ class MyHomePage extends StatelessWidget {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              "${context.watch<Counter>().count}",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: context.read<Counter>().increment,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
