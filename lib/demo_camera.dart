@@ -47,9 +47,12 @@ const CameraApp({super.key});
     }
     return MaterialApp(
       home: Stack(children :[
-        //ElevatedButton.icon( onPressed () {}),
-        Text("camera"),
-          CameraPreview(controller),
+        CameraPreview(controller),
+       /* ElevatedButton.icon(
+            onPressed : (){
+              controller.setDescription(_cameras[++index]);
+            }, label:
+        Text("camera"))*/
         ],
     ));
   }
